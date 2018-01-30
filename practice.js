@@ -29,6 +29,8 @@
 
 // Code Here 
 
+let first = (arr, cb) => cb(arr[0]);
+
 // Do not edit the code below.
 var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan'];
 
@@ -48,6 +50,7 @@ first(names, function(firstName){
 */
 
 //Code Here
+let last = (arr, cb) => cb(arr[arr.length-1]);
 
 // Do not edit the code below.
 last(names, function(lastName){
@@ -64,7 +67,7 @@ last(names, function(lastName){
   Write a function called multiply that takes in three parameters: two numbers and a callback function.  
   Invoke the callback, passing in the product of the two numbers multiplied as the argument. 
 */
-
+let multiply = (num1, num2, cb) => cb(num1*num2);
 //Code Here
 
 // Do not edit the code below.
@@ -83,7 +86,13 @@ multiply(4, 3, function(answer){
   If it does, invoke the callback with true as the argument. 
   If the name does not exist, invoke the callback with false as the argument.
 */
-
+let contains = (arr, nm, cb) => {
+  for (var i=0; i<arr.length; i++) {
+    if (arr[i] === nm){
+    cb(true)}
+    else cb(false)
+  }
+}
 //Code Here 
 
 // Do not edit the code below.
@@ -106,7 +115,14 @@ contains(names, 'Colt', function(result){
 */
 
 //Code Here
-
+function uniq (arr, cb) {
+  for (var i=0; i<arr.length; i++){
+    if (arr[i] == arr) {
+    arr.splice(arr[i], 1);
+  }
+}
+cb(arr)
+}
 // Do not edit the code below.
 uniq(names, function(uniqArr){
   console.log('The new names array with all the duplicate items removed is ', uniqArr);
@@ -123,6 +139,10 @@ uniq(names, function(uniqArr){
 */
 
 //Code Here 
+function each (arr, cb)  {
+  arr.forEach((names, i) => cb(names, i))
+}
+
 
 // Do not edit the code below.
 each(names, function(item, indice){
@@ -140,6 +160,13 @@ each(names, function(item, indice){
 */
 
 // Code here
+function getUserById (users, id, cb){
+  for (let i = 0; i<users.length; i++){
+    if (users[i].id === id){
+      cb(users[i])
+    }
+  }
+}
 
 // Do not edit the code below.
 var users = [
@@ -167,3 +194,4 @@ getUserById(users, '16t', function(user){
   console.log('The user with the id 16t has the email of ' + user.email + ' the name of ' + user.name + ' and the address of ' + user.address); 
 });
 // Do not edit the code above.
+//
